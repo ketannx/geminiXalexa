@@ -25,6 +25,7 @@ function removeEmojis(text) {
 app.post("/alexa", async (req, res) => {
   try {
     const query = req.body.request?.intent?.slots?.query?.value;
+    console.log(query)
 
     if (!query) {
       return res.json({
@@ -62,6 +63,7 @@ app.post("/alexa", async (req, res) => {
 
     // Remove emojis and special chars for Alexa speech
     const reply = removeEmojis(replyRaw).trim();
+    console.log(reply)
 
     return res.json({
       version: "1.0",
