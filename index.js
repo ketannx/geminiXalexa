@@ -2,8 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { GoogleGenAI } = require("@google/genai");
 require("dotenv").config();
+const cron = require('./utils/cron');
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+cron.start();
 
 const app = express();
 app.use(bodyParser.json());
